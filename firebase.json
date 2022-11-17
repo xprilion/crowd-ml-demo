@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "crowd-ml",
+    "site": "crowd-ml-demo",
     "public": "build",
     "ignore": [
       "firebase.json",

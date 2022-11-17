@@ -5,15 +5,15 @@ import "firebase/compat/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAwSGloihyrfW_9NQwbU5jsM4-eCqifk7s",
-  authDomain: "niyoproject-306620.firebaseapp.com",
-  projectId: "niyoproject-306620",
-  storageBucket: "niyoproject-306620.appspot.com",
-  messagingSenderId: "1065240776308",
-  appId: "1:1065240776308:web:a05a0a53d6cd08e18d4b21"
+  apiKey: "AIzaSyCva_O7fgupRn1-rhxKEH4bK9QkF1-uqI8",
+  authDomain: "crowd-ml-demo.firebaseapp.com",
+  projectId: "crowd-ml-demo",
+  storageBucket: "crowd-ml-demo.appspot.com",
+  messagingSenderId: "314663075590",
+  appId: "1:314663075590:web:1c36b99cbc670f8ef0a887"
 };
 
-export const myFirebase = firebase.initializeApp(firebaseConfig);
+const myFirebase = firebase.initializeApp(firebaseConfig);
 const baseDb = myFirebase.firestore();
 export const db = baseDb;
 export default myFirebase;
