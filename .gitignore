@@ -12,6 +12,8 @@
 /build
 /.venv
 
+service-account-key.json
+
 # misc
 .DS_Store
 .env.local
