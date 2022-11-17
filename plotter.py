@@ -7,16 +7,13 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 
 # Use a service account.
-cred = credentials.Certificate('path/to/serviceAccount.json')
+cred = credentials.Certificate('.key/service-account-key.json')
 
 app = firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 
 def listen_multiple():
-    db = firestore.Client(project='crowd-ml-demo')
-    # [START firestore_listen_query_snapshots]
-
     # Create an Event for notifying main thread.
     callback_done = threading.Event()
 
@@ -28,7 +25,7 @@ def listen_multiple():
             print(f'{doc.id}')
         callback_done.set()
 
-    col_query = db.collection(u'pairs')
+    col_query = db.collection(u'pairs').where('score', '>', '-999999')
 
     # Watch the collection query
     query_watch = col_query.on_snapshot(on_snapshot)
