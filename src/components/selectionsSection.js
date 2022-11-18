@@ -35,22 +35,39 @@ function SelectionsSection() {
     useEffect(() => {
         if (choices.length == 5) {
             choices.forEach((item, index) => {
+                console.log(item);
                 let names = [item[0], item[1]];
                 let score = item[2];
                 names.sort();
                 let doc_id = names[0] + "_" + names[1];
                 let docRef = db.collection('pairs').doc(doc_id);
 
-                const doc = docRef.get();
-                if (!doc.exists) {
+                return docRef.update({
+                    score: firebase.firestore.FieldValue.increment(score)
+                })
+                .then(() => {
+                    console.log("Document successfully updated!");
+                })
+                .catch((error) => {
+                    // The document probably doesn't exist.
+                    console.error("Error updating document: ", error);
                     docRef.set({
-                        score: firebase.firestore.FieldValue.increment(score)
+                        score: score
                     });
-                } else {
-                    docRef.update({
-                        score: firebase.firestore.FieldValue.increment(score)
-                    });
-                }
+                });
+
+                // const doc = docRef.get();
+                // if (!doc.exists) {
+                //     console.log("Document does not exist")
+                //     docRef.set({
+                //         score: score
+                //     });
+                // } else {
+                //     console.log("Document exists")
+                //     docRef.update({
+                //         score: firebase.firestore.FieldValue.increment(score)
+                //     });
+                // }
             })
         }
     }, [choices]);
