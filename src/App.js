@@ -1,17 +1,18 @@
-import '@picocss/pico';
-import React, { useState, useEffect, useReducer } from "react";
-import TopSection from './components/topSection';
-import FooterSection from './components/footerSection';
-import SelectionsSection from './components/selectionsSection';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import HomePage from "./pages/Home";
+import ResultPage from "./pages/Results";
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <TopSection />
-      <SelectionsSection />
-      <FooterSection />
-    </div>
+    <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+    </Router>
   );
 }
-
-export default App;
